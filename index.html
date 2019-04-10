@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hola mundo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- development version, includes helpful console warnings -->
+</head>
+<body>
+	<main id="app">
+		
+	<h1 id="show">{{message}}</h1>
+	<input id="box" v-model='message' type="text">
+
+	</main>
+	
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		// const input = document.querySelector('#box'),
+		// h1 = document.querySelector('#show')
+
+		// input.addEventListener('keyup',() => h1.innertHTML = input.value);
+
+		new Vue({
+			// Dos elementos: 1. Donde se va a estar controlando la reactividad
+			el:'#app',
+			// El enlace entre la vista y los datos, also object que puede contener atributos
+			data: {
+				// estos atributos seran enlazados por medio de las directivas en las etiquetas html
+				message: 'Hola mundo con Vue.js'
+			}
+		})
+	</script>
+</html>

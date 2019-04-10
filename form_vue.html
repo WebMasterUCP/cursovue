@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario con Vue</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://vuejs.org/images/logo.png">
+</head>
+<body>
+	<main id="app">
+		<h1>Basico formulario con Vue.js</h1>
+		<form id="contactForm" action="" name="form" >
+			<legend>¡Que desea enviar?</legend>
+			<div align="center">
+				<!-- Para Vue modifique dinamicamente hay que volverlos componentes dinamicos: ':' para no escribir  v-bind en el atributo value del input-->
+				<input v-model="formType" type="radio" :value="true" name="formType" id="opinion">
+				<label for="opinion">Opinión</label>
+				<!-- Para Vue modifique dinamicamente hay que volverlos componentes dinamicos: ':' para no escribir  v-bind en el atributo value del input-->
+				<input v-model="formType" type="radio" :value="false" name="formType" id="budget">
+				<label for="budget">Presupesto</label>
+			<legend>Formulario de <span>{{ formTitle }}</span></legend>
+			</div>
+
+			<input type="text" name="name" title="Tu nombre" placeholder="Ingresa tu nombre" required pattern="[a-z]{1,15}">
+			<input type="email" name="email" title="Tu correo" placeholder="Ingresa tu correo" required pattern="[@a-z*.,-?¿_+}{%&$/]">
+			<template v-if="!formType">
+				<input type="text" name="telefono" title="Tu telefono" placeholder="Ingrese su telefono" pattern="^[0-9]" required>
+				<select name="services" id="" required>
+					<option value="">Opciones</option>
+				</select>
+			</template>
+			<template v-else>				
+			<input type="text" name="comentarios" title="Asunto a tratar" placeholder="Ingresa asunto" required pattern="[a-zA-Z]">
+			</template>
+
+			<input type="submit" value="enviar" name="submit">
+
+		</form>
+		<!-- Valor del dato que estemos manejando -->
+		<pre>{{$data}}</pre>
+	</main>
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	// Definicion del objeto
+	 const vm = new Vue({
+		el:'#app',
+		data:{
+			// Para saber que tipo de formulario va a pedir
+			// Se vincula los inputs de tipo radio a esta propiedad
+			formType: true,
+			// Propiedad 'message'
+			message:{
+				name: '',
+				email: '',
+				telefono: '',
+				asunto: '',
+				comentarios: '',
+				// Variable que captura el dato a traves de php 	
+				serverResponse:''
+			},
+			services:[
+				{id:null,name:'Seleccione un servicio'},
+				{id:1,name:'Diseño Grafico'},
+				{id:2,name:'Diseño Web'},
+				{id:3,name:'Programacion Web'},
+				{id:4,name:'Programacion Movil'},
+				{id:5,name:'Marketin Digital'}
+			],
+			formats:{
+				name:'',
+				email:''
+			},
+			// Cuando via ajax el servidor nos responda
+			serverResponse:false
+		}
+	})
+</script>
+</body>
+</html>
