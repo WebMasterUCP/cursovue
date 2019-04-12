@@ -18,6 +18,7 @@
 				<!-- Para Vue modifique dinamicamente hay que volverlos componentes dinamicos: ':' para no escribir  v-bind en el atributo value del input-->
 				<input v-model="formType" type="radio" :value="false" name="formType" id="budget">
 				<label for="budget">Presupesto</label>
+				<!-- El legend es necesario volverlo reactivo: dinamico({{}}) -->
 			<legend>Formulario de <span>{{ formTitle }}</span></legend>
 			</div>
 
