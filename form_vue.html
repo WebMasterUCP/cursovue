@@ -24,6 +24,7 @@
 
 			<input type="text" name="name" title="Tu nombre" placeholder="Ingresa tu nombre" required pattern="[a-z]{1,15}">
 			<input type="email" name="email" title="Tu correo" placeholder="Ingresa tu correo" required pattern="[@a-z*.,-?¿_+}{%&$/]">
+			<!-- Hace referencia al del data -->
 			<template v-if="!formType">
 				<input type="text" name="telefono" title="Tu telefono" placeholder="Ingrese su telefono" pattern="^[0-9]" required>
 				<select name="services" id="" required>
@@ -42,7 +43,8 @@
 	</main>
 
 <!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="vue.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 <script>
 	// Definicion del objeto
 	 const vm = new Vue({
